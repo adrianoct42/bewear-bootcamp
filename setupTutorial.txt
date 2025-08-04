@@ -1,0 +1,8 @@
+Autosort de classes tailwind: https://github.com/tailwindlabs/prettier-plugin-tailwindcss
+1- npm install -D prettier prettier-plugin-tailwindcss
+2- Crie um arquivo .prettierrc e coloque os dados conforme os atualmente no projeto.
+
+Automaticamente organizar os imports: https://github.com/lydell/eslint-plugin-simple-import-sort
+1- npm install --save-dev eslint-plugin-simple-import-sort
+2- Crie a pasta .vscode
+3- Crie e insira os dados num arquivo settings.json conforme os atualmente no projeto.
