@@ -33,6 +33,8 @@ export const POST = async (request: Request) => {
         status: "paid",
       })
       .where(eq(orderTable.id, orderId));
+
+    // Limpe o carrinho abaixo:
   }
   return NextResponse.json({ received: true });
 };
