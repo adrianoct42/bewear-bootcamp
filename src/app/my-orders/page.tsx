@@ -1,10 +1,8 @@
-import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { Header } from "@/components/common/header";
-import { db } from "@/db";
-import { orderTable } from "@/db/schema";
+import { getOrdersByUser } from "@/data/order/get-order";
 import { auth } from "@/lib/auth";
 
 import Orders from "./components/orders";
@@ -18,20 +16,7 @@ const MyOrdersPage = async () => {
     return redirect("/login");
   }
 
-  const orders = await db.query.orderTable.findMany({
-    where: eq(orderTable.userId, session?.user.id),
-    with: {
-      items: {
-        with: {
-          productVariant: {
-            with: {
-              product: true,
-            },
-          },
-        },
-      },
-    },
-  });
+  const orders = await getOrdersByUser(session.user.id);
 
   return (
     <>
