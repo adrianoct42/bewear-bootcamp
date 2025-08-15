@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 
 import { authClient } from "@/lib/auth-client";
@@ -84,7 +85,10 @@ export const Header = () => {
                       <Button
                         variant="outline"
                         size="icon"
-                        onClick={() => authClient.signOut()}
+                        onClick={() => {
+                          authClient.signOut();
+                          redirect("/");
+                        }}
                       >
                         <LogOutIcon />
                       </Button>
